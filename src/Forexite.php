@@ -31,7 +31,7 @@ class Forexite
             $zip->close();
             $unzipDirFiles = array_diff(scandir($unzipDir), ['..', '.']);
             foreach ($unzipDirFiles as $unzipDirFile) {
-                $f = fopen($unzipDirFile, 'r');
+                $f = fopen($unzipDir . $unzipDirFile, 'r');
                 fgetcsv($f);
                 while (!empty($row = fgetcsv($f))) {
                     $rows[] = $row;
