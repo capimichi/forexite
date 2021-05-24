@@ -43,7 +43,7 @@ class Forexite
             unlink($path);
         }
         if (file_exists($unzipDir)) {
-            unlink($unzipDir);
+            rmdir($unzipDir);
         }
         
         $assetValues = [];
