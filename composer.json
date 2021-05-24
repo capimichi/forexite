@@ -1,0 +1,15 @@
+{
+  "name": "capimichi/forexite",
+  "authors": [
+    {
+      "name": "Michele Capicchioni",
+      "email": "capimichi@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Forexite\\": "src/"
+    }
+  }
+}
