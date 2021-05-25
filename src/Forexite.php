@@ -48,25 +48,27 @@ class Forexite
         
         $assetValues = [];
         foreach ($rows as $row) {
-            $assetValue = new AssetValue();
-            $assetValue->setAsset($asset);
-            $createdAt = new \DateTime();
-            $createdAt->setDate(
-                substr($row[1], 0, 4),
-                substr($row[1], 4, 2),
-                substr($row[1], 6, 2)
-            );
-            $createdAt->setTime(
-                substr($row[2], 0, 2),
-                substr($row[2], 2, 2),
-                substr($row[2], 4, 2)
-            );
-            $assetValue->setCreatedAt($createdAt);
-            $assetValue->setOpen(floatval($row[3]));
-            $assetValue->setHigh(floatval($row[4]));
-            $assetValue->setLow(floatval($row[5]));
-            $assetValue->setClose(floatval($row[6]));
-            $assetValues[] = $assetValue;
+            if ($row[0] == $asset) {
+                $assetValue = new AssetValue();
+                $assetValue->setAsset($asset);
+                $createdAt = new \DateTime();
+                $createdAt->setDate(
+                    substr($row[1], 0, 4),
+                    substr($row[1], 4, 2),
+                    substr($row[1], 6, 2)
+                );
+                $createdAt->setTime(
+                    substr($row[2], 0, 2),
+                    substr($row[2], 2, 2),
+                    substr($row[2], 4, 2)
+                );
+                $assetValue->setCreatedAt($createdAt);
+                $assetValue->setOpen(floatval($row[3]));
+                $assetValue->setHigh(floatval($row[4]));
+                $assetValue->setLow(floatval($row[5]));
+                $assetValue->setClose(floatval($row[6]));
+                $assetValues[] = $assetValue;
+            }
         }
         return $assetValues;
     }
